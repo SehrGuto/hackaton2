@@ -48,20 +48,27 @@ public class AgendaTelefonica {
                         System.out.println("**************************************");
                         System.out.println("Por favor elige una opción de 1 a 5");
                         int opt2 = scan.nextInt();
+                        
                         switch (opt2){
                             case 1:
-                                if (!Contacto.agendaLlena(listaContactos, 10)){
+                                
+                                if (Contacto.agendaLlena(listaContactos, 10)){
+                                    System.out.println("La lista está llena, por favor elimine un contacto");
+                                }else{
                                 //funcion para añadir contacto
                                 System.out.println("Ingrese el nombre del contacto:");
                                 String nombre = scan.next();
                                 System.out.println("Ingrese el número de teléfono:");
                                 int telefono = scan.nextInt();
+                                
+                                if (Contacto.existeContacto(listaContactos, nombre)){
+                                    System.out.println("Ese contacto ya existe, intente nuevamente");
+                                }else{
                                 Contacto nuevoContacto = new Contacto(nombre, telefono);
                                 nuevoContacto.aniadirContacto(listaContactos, nuevoContacto);
                                 // Verificar si el contacto se añadió correctamente
                                 System.out.println("Contacto añadido correctamente.");
-                                }else{
-                                System.out.println("La lista está llena, por favor elimine un contacto");
+                                }
                                 }
                                 break;
                             case 2:
@@ -128,19 +135,23 @@ public class AgendaTelefonica {
                         int opt2 = scan.nextInt();
                         switch (opt2){
                             case 1:
-                                //funcion para añadir contacto
-                                 if (!Contacto.agendaLlena(listaContactos2, tam)){
+                                if (Contacto.agendaLlena(listaContactos2, tam)){
+                                    System.out.println("La lista está llena, por favor elimine un contacto");
+                                }else{
                                 //funcion para añadir contacto
                                 System.out.println("Ingrese el nombre del contacto:");
                                 String nombre = scan.next();
                                 System.out.println("Ingrese el número de teléfono:");
                                 int telefono = scan.nextInt();
+                                
+                                if (Contacto.existeContacto(listaContactos2, nombre)){
+                                    System.out.println("Ese contacto ya existe, intente nuevamente");
+                                }else{
                                 Contacto nuevoContacto = new Contacto(nombre, telefono);
                                 nuevoContacto.aniadirContacto(listaContactos2, nuevoContacto);
                                 // Verificar si el contacto se añadió correctamente
                                 System.out.println("Contacto añadido correctamente.");
-                                }else{
-                                System.out.println("La lista está llena, por favor elimine un contacto");
+                                }
                                 }
                                 break;
                             case 2:

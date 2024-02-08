@@ -33,8 +33,16 @@ public class Contacto {
         listaContactos.add(nuevoContacto);    
     }
     
-    public static void existeContacto(){
-        
+    public static Boolean existeContacto(List<Contacto> listaContactos, String nombre){
+        Boolean existe = false;
+        for (Contacto contacto : listaContactos) {
+            if (contacto.getNombre().equalsIgnoreCase(nombre)) {
+                 existe = true;
+            }else{
+                existe = false;
+            }
+        }
+        return existe;       
     }
     
     public static void listarContactos(List<Contacto> listaContactos){
