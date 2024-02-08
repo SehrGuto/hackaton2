@@ -59,19 +59,19 @@ public class Contacto {
     }
     
     public static Boolean eliminarContacto(List<Contacto> listaContactos, String nombre){
+        Contacto contactoAEliminar =null;
         for (Contacto contacto : listaContactos) {
             if (contacto.getNombre().equalsIgnoreCase(nombre)) {
-                return contacto; // Retorna el contacto si se encuentra
-            } else {
-                return null;
-                }
+                contactoAEliminar = contacto; // Retorna el contacto si se encuentra
+            }
         }
-        if (eliminarContacto != null) {
-            listaContactos.remove(contacto);
+        
+        if (contactoAEliminar != null) {
+            listaContactos.remove(contactoAEliminar);
             return true;
         } else {
             return false;
-        }
+    }
     }
     
     public static Boolean agendaLlena(List<Contacto> listaContactos, int tam){
@@ -82,8 +82,10 @@ public class Contacto {
         return lleno;
     }
     
-    public static void espacioLibre(){
-        
+    public static int espacioLibre(List<Contacto> listaContactos, int tam){
+        int espaciosOcupados = listaContactos.size();
+        int capacidadTotal = tam;
+        return capacidadTotal - espaciosOcupados;        
     }
 }
 
