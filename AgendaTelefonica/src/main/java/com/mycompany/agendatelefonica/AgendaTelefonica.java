@@ -38,12 +38,14 @@ public class AgendaTelefonica {
                     while (!salir) {
                         //creamos el menu de opciones para el usuario despues que 
                         //la lista telefonica ya esté creada
+                        System.out.println("**************************************");
                         System.out.println("1. Añadir contacto");
                         System.out.println("2. Listar contactos");
                         System.out.println("3. Buscar contacto");
                         System.out.println("4. Eliminar contacto");
                         System.out.println("5. Verificar espacios libres");
                         System.out.println("6. Salir");
+                        System.out.println("**************************************");
                         System.out.println("Por favor elige una opción de 1 a 5");
                         int opt2 = scan.nextInt();
                         switch (opt2){
@@ -51,7 +53,7 @@ public class AgendaTelefonica {
                                 if (!Contacto.agendaLlena(listaContactos, 10)){
                                 //funcion para añadir contacto
                                 System.out.println("Ingrese el nombre del contacto:");
-                                String nombre = scan.nextLine();
+                                String nombre = scan.next();
                                 System.out.println("Ingrese el número de teléfono:");
                                 int telefono = scan.nextInt();
                                 Contacto nuevoContacto = new Contacto(nombre, telefono);
@@ -68,7 +70,8 @@ public class AgendaTelefonica {
                                 break;
                             case 3:
                                 //funcion para buscar un contacto
-                                String nombreABuscar = "Nombre a buscar"; 
+                                System.out.println("Por favor ingrese el nombre buscado:");
+                                String nombreABuscar = scan.next(); 
                                 Contacto encontrado = Contacto.buscaContactos(listaContactos, nombreABuscar);
                                 if (encontrado != null) {
                                 System.out.println("Contacto encontrado:");
@@ -79,8 +82,9 @@ public class AgendaTelefonica {
                                 break;
                             case 4:
                                 //funcion para eliminar un contacto
-                                String nombreABuscar = scan.nextLine();
-                                boolean eliminado = Contacto.eliminarContacto(listaContactos, nombreABuscar);
+                                System.out.println("Por favor ingrese el nombre del contacto a eliminar: ");
+                                String nombreAEliminar = scan.next();
+                                boolean eliminado = Contacto.eliminarContacto(listaContactos, nombreAEliminar);
                                 if (eliminado) {
                                     System.out.println("Se ha eliminado el contacto exitosamente!!!");
                                 } else {
@@ -89,6 +93,8 @@ public class AgendaTelefonica {
                                 break;
                             case 5:
                                 //funcion para verificar la cantidad de espacios libres
+                                System.out.println("El total de espacios libres es de: " + Contacto.espacioLibre(listaContactos, 10));
+                                
                                 break;
                             case 6:
                                 //salir
@@ -110,12 +116,14 @@ public class AgendaTelefonica {
                     while (!salir) {
                         //creamos el menu de opciones para el usuario despues que 
                         //la lista telefonica ya esté creada
+                        System.out.println("**************************************");
                         System.out.println("1. Añadir contacto");
                         System.out.println("2. Listar contactos");
                         System.out.println("3. Buscar contacto");
                         System.out.println("4. Eliminar contacto");
                         System.out.println("5. Verificar espacios libres");
                         System.out.println("6. Salir");
+                        System.out.println("**************************************");
                         System.out.println("Por favor elige una opción de 1 a 5");
                         int opt2 = scan.nextInt();
                         switch (opt2){
@@ -124,7 +132,7 @@ public class AgendaTelefonica {
                                  if (!Contacto.agendaLlena(listaContactos2, tam)){
                                 //funcion para añadir contacto
                                 System.out.println("Ingrese el nombre del contacto:");
-                                String nombre = scan.nextLine();
+                                String nombre = scan.next();
                                 System.out.println("Ingrese el número de teléfono:");
                                 int telefono = scan.nextInt();
                                 Contacto nuevoContacto = new Contacto(nombre, telefono);
@@ -141,7 +149,8 @@ public class AgendaTelefonica {
                                 break;
                             case 3:
                                 //funcion para buscar un contacto
-                                String nombreABuscar = "Nombre a buscar"; 
+                                System.out.println("Por favor ingrese el nombre buscado:");
+                                String nombreABuscar = scan.next(); 
                                 Contacto encontrado = Contacto.buscaContactos(listaContactos2, nombreABuscar);
                                 if (encontrado != null) {
                                 System.out.println("Contacto encontrado:");
@@ -152,9 +161,18 @@ public class AgendaTelefonica {
                                 break;
                             case 4:
                                 //funcion para eliminar un contacto
+                                System.out.println("Por favor ingrese el nombre del contacto a eliminar: ");
+                                String nombreAEliminar = scan.next();
+                                boolean eliminado = Contacto.eliminarContacto(listaContactos2, nombreAEliminar);
+                                if (eliminado) {
+                                    System.out.println("Se ha eliminado el contacto exitosamente!!!");
+                                } else {
+                                    System.out.println("No se encontro el contacto que se introdujo en la busqueda...");
+                                }
                                 break;
                             case 5:
                                 //funcion para verificar la cantidad de espacios libres
+                                System.out.println("El total de espacios libres es de: " + Contacto.espacioLibre(listaContactos2, tam));
                                 break;
                             case 6:
                                 //salir
