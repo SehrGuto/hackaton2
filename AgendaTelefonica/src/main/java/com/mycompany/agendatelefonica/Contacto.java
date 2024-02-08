@@ -58,8 +58,20 @@ public class Contacto {
         return null;
     }
     
-    public static void eliminarContacto(){
-        
+    public static Boolean eliminarContacto(List<Contacto> listaContactos, String nombre){
+        for (Contacto contacto : listaContactos) {
+            if (contacto.getNombre().equalsIgnoreCase(nombre)) {
+                return contacto; // Retorna el contacto si se encuentra
+            } else {
+                return null;
+                }
+        }
+        if (eliminarContacto != null) {
+            listaContactos.remove(contacto);
+            return true;
+        } else {
+            return false;
+        }
     }
     
     public static Boolean agendaLlena(List<Contacto> listaContactos, int tam){

@@ -79,6 +79,13 @@ public class AgendaTelefonica {
                                 break;
                             case 4:
                                 //funcion para eliminar un contacto
+                                String nombreABuscar = scan.nextLine();
+                                boolean eliminado = Contacto.eliminarContacto(listaContactos, nombreABuscar);
+                                if (eliminado) {
+                                    System.out.println("Se ha eliminado el contacto exitosamente!!!");
+                                } else {
+                                    System.out.println("No se encontro el contacto que se introdujo en la busqueda...");
+                                }
                                 break;
                             case 5:
                                 //funcion para verificar la cantidad de espacios libres
