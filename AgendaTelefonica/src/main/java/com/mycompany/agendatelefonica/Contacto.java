@@ -1,5 +1,7 @@
 package com.mycompany.agendatelefonica;
 
+import java.util.List;
+
 public class Contacto {
     public String nombre;
     public int telefono; 
@@ -27,37 +29,50 @@ public class Contacto {
     public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
-    //John
-    public void aniadirContacto(){
+    public void aniadirContacto(List<Contacto> listaContactos, Contacto nuevoContacto) {
+        listaContactos.add(nuevoContacto);    
+    }
+    
+    public static void existeContacto(){
         
     }
     
-    public void existeContacto(){
+    public static void listarContactos(List<Contacto> listaContactos){
+         if (listaContactos.isEmpty()) {
+            System.out.println("No hay contactos en la lista.");
+        } else {
+            System.out.println("Lista de contactos:");
+            for (Contacto contacto : listaContactos) {
+                System.out.println("Nombre: " + contacto.getNombre() + ", Teléfono: " + contacto.getTelefono());
+            }
+        }        
+    }
+    
+    public static Contacto buscaContactos(List<Contacto> listaContactos, String nombre){
+        for (Contacto contacto : listaContactos) {
+            if (contacto.getNombre().equalsIgnoreCase(nombre)) {
+                return contacto; // Retorna el contacto si se encuentra
+            }
+        }
+        //retorna null si no encuentra el contacto
+        return null;
+    }
+    
+    public static void eliminarContacto(){
         
     }
     
-    public void listarContactos(){
-        
+    public static Boolean agendaLlena(List<Contacto> listaContactos, int tam){
+        Boolean lleno = false;
+        if (listaContactos.size() > tam){
+            lleno = true;
+        }
+        return lleno;
     }
     
-    public void buscaContactos(){
+    public static void espacioLibre(){
         
     }
-    
-    public void eliminarContacto(){
-        
-    }
-    
-    public void agendaLlena(){
-        
-    }
-    
-    public void espacioLibre(){
-        
-    }
-    
-    
 }
-
 
 
